@@ -4,8 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagination App - JavaScript | TechGuy 360</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <main class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <span>PageFlow</span>
+            </div>
+
+            <div class="header-tag">
+                <i class="fa-solid fa-code"></i>
+                JavaScript Project
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <section class="main-section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">DATA NAVIGATION TOOL</span>
+
+                    <h1>Pagination App</h1>
+
+                    <p>
+                        Browse, explore, and navigate through your data
+                        with a simple pagination experience.
+                    </p>
+                </div>
+
+                <div class="heading-icon">
+                    <i class="fa-solid fa-table-list"></i>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Records</span>
+                        <h2 id="totalRecords">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Pages</span>
+                        <h2 id="totalPages">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-bookmark"></i>
+                    </div>
+
+                    <div>
+                        <span>Current Page</span>
+                        <h2 id="currentPageStat">1</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Card -->
+            <div class="content-card">
+                <div class="content-header">
+                    <div>
+                        <h2>Explore Records</h2>
+                        <p>Browse your collection of records.</p>
+                    </div>
+
+                    <div class="per-page">
+                        <label for="itemsPerPage">Show</label>
+                        <select id="itemsPerPage">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                        <span>entries</span>
+                    </div>
+                </div>
+
+                <!-- Records -->
+                <div id="recordsContainer" class="records-grid">
+                    <!-- JavaScript renders records here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state hidden">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <h3>No Records Found</h3>
+                    <p>There is no data available to display.</p>
+                </div>
+
+                <!-- Pagination Footer -->
+                <div class="pagination-footer">
+                    <div class="results-info" id="resultsInfo">
+                        Showing 0 to 0 of 0 entries
+                    </div>
+
+                    <div class="pagination" id="pagination">
+                        <button class="page-btn nav-btn" id="firstBtn"
+                            aria-label="First page" title="First page">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </button>
+
+                        <button class="page-btn nav-btn" id="prevBtn"
+                            aria-label="Previous page" title="Previous page">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </button>
+
+                        <div class="page-numbers" id="pageNumbers">
+                            <!-- Page numbers generated here -->
+                        </div>
+
+                        <button class="page-btn nav-btn" id="nextBtn"
+                            aria-label="Next page" title="Next page">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </button>
+
+                        <button class="page-btn nav-btn" id="lastBtn"
+                            aria-label="Last page" title="Last page">
+                            <i class="fa-solid fa-angles-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
 </body>
 </html>
