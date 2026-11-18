@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore beautiful images with a seamless infinite scrolling experience.">
+    <title>Infinite Scroll - Js Project | TechGuy 360</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-infinity"></i>
+            <span>Scroll<span class="logo-highlight">Flow</span></span>
+        </a>
+
+        <div class="nav-tag">
+            <i class="fa-solid fa-circle-check"></i>
+            Infinite Discovery
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            Endless Inspiration
+        </div>
+        <h1>Explore Without <span>Limits.</span></h1>
+
+        <p>
+            Discover beautiful photography from around the world.
+            Just keep scrolling and let the inspiration flow.
+        </p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <i class="fa-solid fa-images"></i>
+                <span id="image-count">0</span>
+                <small>Images Loaded</small>
+            </div>
+
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <i class="fa-solid fa-infinity"></i>
+                <span>∞</span>
+                <small>Possibilities</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <main class="gallery-section">
+        <div class="section-heading">
+            <div>
+                <span class="section-label">YOUR DAILY INSPIRATION</span>
+                <h2>Explore Gallery</h2>
+            </div>
+
+            <div class="live-status">
+                <span class="status-dot"></span>
+                Live Feed
+            </div>
+        </div>
+
+        <!-- Image Grid -->
+        <div class="gallery" id="gallery"></div>
+        <!-- Loading Indicator -->
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Discovering more inspiration...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="error-message" hidden>
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <h3>Something went wrong!</h3>
+            <p>We couldn't load more images. Please try again.</p>
+            <button id="retry-btn">
+                <i class="fa-solid fa-rotate-right"></i>
+                Try Again
+            </button>
+        </div>
+
+        <!-- End Message -->
+        <div class="end-message" id="end-message" hidden>
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>You've reached the end!</h3>
+            <p>That's all the inspiration available right now.</p>
+        </div>
+
+        <!-- Intersection Observer Target -->
+        <div id="scroll-trigger"></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <i class="fa-solid fa-infinity"></i>
+            ScrollFlow
+        </div>
+
+        <p>Keep exploring. Keep discovering. Keep scrolling.</p>
+
+        <div class="footer-credit">
+            Made with <i class="fa-solid fa-heart"></i> using HTML, CSS & JavaScript
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

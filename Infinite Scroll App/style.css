@@ -1,0 +1,484 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --bg: #0b0d14;
+    --surface: #121522;
+    --card: #171b2a;
+    --primary: #8b5cf6;
+    --secondary: #06b6d4;
+    --text: #f8fafc;
+    --muted: #9299ad;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+
+.navbar {
+    height: 75px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(11, 13, 20, 0.9);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.logo i {
+    color: var(--primary);
+    font-size: 27px;
+}
+
+.logo-highlight {
+    color: var(--primary);
+}
+
+.nav-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 9px 15px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+}
+
+.nav-tag i {
+    color: #22c55e;
+}
+
+/* ==============================
+   HERO SECTION
+============================== */
+
+.hero {
+    text-align: center;
+    padding: 85px 20px 75px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.17), transparent 65%);
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 17px;
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    border-radius: 30px;
+    color: #c4b5fd;
+    font-size: 12px;
+    margin-bottom: 25px;
+    background: rgba(139, 92, 246, 0.08);
+}
+
+.hero h1 {
+    font-size: clamp(36px, 6vw, 65px);
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg, #a78bfa, #22d3ee);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero > p {
+    max-width: 540px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 40px;
+}
+
+.stat {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.stat i {
+    grid-row: span 2;
+    color: var(--primary);
+    font-size: 22px;
+}
+
+.stat span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.stat small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.stat-divider {
+    height: 35px;
+    width: 1px;
+    background: var(--border);
+}
+
+/* ==============================
+   GALLERY SECTION
+============================== */
+
+.gallery-section {
+    width: 84%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.section-label {
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: 27px;
+    margin-top: 8px;
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 15px;
+    border-radius: 30px;
+    background: rgba(34, 197, 94, 0.08);
+    color: #4ade80;
+    font-size: 11px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+/* ==============================
+   IMAGE GRID
+============================== */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.image-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    animation: fadeIn 0.5s ease;
+}
+
+.image-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-card:hover img {
+    transform: scale(1.06);
+}
+
+.image-info {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.image-info h3 {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.image-info p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+.image-info a {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    color: #c4b5fd;
+    background: rgba(139, 92, 246, 0.12);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.image-info a:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ==============================
+   LOADING INDICATOR
+============================== */
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 45px 10px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.spinner {
+    width: 38px;
+    height: 38px;
+    border: 3px solid rgba(139, 92, 246, 0.15);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==============================
+   ERROR MESSAGE
+============================== */
+
+.error-message,
+.end-message {
+    text-align: center;
+    padding: 45px 15px;
+}
+
+.error-message > i {
+    font-size: 35px;
+    color: #f87171;
+    margin-bottom: 15px;
+}
+
+.error-message h3,
+.end-message h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.error-message p,
+.end-message p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.error-message button {
+    margin-top: 20px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.error-message button:hover {
+    background: #7c3aed;
+    transform: translateY(-2px);
+}
+
+.end-message > i {
+    font-size: 35px;
+    color: #22c55e;
+    margin-bottom: 15px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    text-align: center;
+    padding: 35px 15px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.footer-logo {
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.footer-logo i {
+    color: var(--primary);
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.footer-credit {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 22px;
+}
+
+.footer-credit i {
+    color: #f87171;
+}
+
+/* ==============================
+   ANIMATIONS
+============================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 900px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-section {
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        height: 65px;
+        padding: 0 5%;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .logo i {
+        font-size: 22px;
+    }
+
+    .nav-tag {
+        font-size: 10px;
+        padding: 8px 10px;
+    }
+
+    .hero {
+        padding: 65px 20px 55px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .hero > p {
+        font-size: 13px;
+    }
+
+    .hero-stats {
+        gap: 20px;
+    }
+
+    .gallery-section {
+        width: 90%;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .section-heading h2 {
+        font-size: 22px;
+    }
+
+    .section-label {
+        font-size: 9px;
+    }
+
+    .live-status {
+        font-size: 9px;
+        padding: 8px 10px;
+    }
+}
