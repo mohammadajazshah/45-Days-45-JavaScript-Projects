@@ -23,76 +23,40 @@
             <i class="fa-solid fa-film"></i>
             Cine<span>Search</span>
         </a>
-
-        <div class="nav-tag">
-            <i class="fa-solid fa-circle-play"></i>
-            Movie Discovery
-        </div>
+        <div class="nav-tag"><i class="fa-solid fa-circle-play"></i>Movie Discovery</div>
     </header>
 
     <!-- Hero Section -->
     <main>
         <section class="hero">
             <div class="hero-content">
-                <span class="hero-label">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    YOUR MOVIE DISCOVERY HUB
-                </span>
-
-                <h1>
-                    Find Your Next
-                    <span>Favorite Movie.</span>
-                </h1>
-
-                <p>
-                    Explore movies, discover hidden gems, and find
-                    your next cinematic experience.
-                </p>
+                <span class="hero-label"><i class="fa-solid fa-wand-magic-sparkles"></i>YOUR MOVIE DISCOVERY HUB</span>
+                <h1>Find Your Next<span>Favorite Movie.</span></h1>
+                <p>Explore movies, discover hidden gems, and find your next cinematic experience.</p>
 
                 <!-- Search Form -->
                 <form class="search-form" id="searchForm">
-
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-
-                    <input
-                        type="text"
-                        id="searchInput"
-                        placeholder="Search movies by title..."
-                        autocomplete="off"
-                        aria-label="Search movies"
-                    >
-
-                    <button type="submit" id="searchButton">
-                        Search
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                    <input type="text" id="searchInput" placeholder="Search movies by title..." autocomplete="off" aria-label="Search movies">
+                    <button type="submit" id="searchButton"> Search <i class="fa-solid fa-arrow-right"></i></button>
 
                 </form>
-
                 <div class="search-hint">
                     <i class="fa-solid fa-circle-info"></i>
                     Try searching for Inception, Interstellar or Avatar.
                 </div>
-
             </div>
-
-            <div class="hero-decoration">
-                <i class="fa-solid fa-clapperboard"></i>
-            </div>
+            <div class="hero-decoration"><i class="fa-solid fa-clapperboard"></i></div>
         </section>
 
         <!-- Movie Results -->
         <section class="movies-section">
-
             <div class="section-heading">
                 <div>
                     <span class="section-label">EXPLORE COLLECTION</span>
                     <h2 id="resultsTitle">Discover Movies</h2>
                 </div>
-
-                <span class="results-count" id="resultsCount">
-                    0 Movies
-                </span>
+                <span class="results-count" id="resultsCount">0 Movies</span>
             </div>
 
             <!-- Loading -->
@@ -103,74 +67,44 @@
 
             <!-- Error / Empty State -->
             <div class="message-container" id="message">
-                <div class="message-icon">
-                    <i class="fa-solid fa-film"></i>
-                </div>
+                <div class="message-icon"><i class="fa-solid fa-film"></i></div>
 
                 <h3>Ready to Explore?</h3>
-
-                <p>
-                    Search for your favorite movies and discover
-                    something amazing.
-                </p>
+                <p>Search for your favorite movies and discover something amazing.</p>
             </div>
 
             <!-- Movie Cards -->
             <div class="movies-grid" id="moviesGrid"></div>
-
             <!-- Pagination -->
             <div class="pagination hidden" id="pagination">
-                <button id="prevButton" disabled>
-                    <i class="fa-solid fa-chevron-left"></i>
-                    Previous
-                </button>
+                <button id="prevButton" disabled><i class="fa-solid fa-chevron-left"></i>Previous</button>
 
                 <span id="pageInfo">Page 1</span>
-
-                <button id="nextButton">
-                    Next
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
+                <button id="nextButton">Next<i class="fa-solid fa-chevron-right"></i></button>
             </div>
-
         </section>
-
     </main>
 
     <!-- Movie Details Modal -->
     <div class="modal hidden" id="movieModal">
-
         <div class="modal-overlay" id="modalOverlay"></div>
-
         <div class="modal-content">
-
             <button class="modal-close" id="closeModal"
                 aria-label="Close movie details">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-
             <div id="modalBody"></div>
-
         </div>
-
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">
-            <i class="fa-solid fa-film"></i>
-            CineSearch
-        </div>
-
-        <p>
-            Discover movies. Explore stories. Enjoy cinema.
-        </p>
-
+        <div class="footer-logo"><i class="fa-solid fa-film"></i>CineSearch</div>
+        <p>Discover movies. Explore stories. Enjoy cinema.</p>
         <span>Powered by OMDb API</span>
     </footer>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
-
 </body>
 </html>
