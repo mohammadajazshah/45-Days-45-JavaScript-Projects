@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert 100+ international currencies with CurrencyFlow.">
+    <title>CurrencyFlow - Js Project | TechGuy 360</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- HEADER -->
+    <header class="header">
+        <a href="#" class="logo">
+            <span class="logo-icon">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+            </span>
+            <span>Currency<span class="logo-highlight">Flow</span></span>
+        </a>
+
+        <div class="header-actions">
+            <span class="live-indicator">
+                <span class="live-dot"></span>
+                Exchange Rates
+            </span>
+
+            <!----Theme Toggle---->
+            <button class="theme-btn" id="themeBtn"
+                aria-label="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+        </div>
+    </header>
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <span class="hero-tag">
+                <i class="fa-solid fa-globe"></i>
+                GLOBAL CURRENCY EXCHANGE
+            </span>
+            <h1>Currency <span>Converter</span></h1>
+            <p>
+                Convert 100+ international currencies with the latest
+                available exchange rates.
+            </p>
+        </section>
+
+        <!-- CONVERTER -->
+        <section class="converter-card">
+            <div class="card-header">
+                <div>
+                    <h2>Convert Currency</h2>
+                    <p>Choose currencies and enter your amount.</p>
+                </div>
+
+                <button class="refresh-btn" id="refreshBtn"
+                    title="Refresh exchange rates"
+                    aria-label="Refresh exchange rates">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+
+            <!-- AMOUNT -->
+            <div class="amount-group">
+                <label for="amount">Amount</label>
+                <div class="amount-input-wrapper">
+                    <i class="fa-solid fa-wallet"></i>
+                    <input type="number" id="amount" value="1" min="0" step="any" placeholder="Enter amount">
+                </div>
+            </div>
+
+            <!-- CURRENCY SELECTION -->
+            <div class="currency-section">
+
+                <!-- FROM -->
+                <div class="currency-group">
+                    <label>From</label>
+
+                    <div class="currency-picker" id="fromPicker">
+                        <button class="currency-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="currency-symbol">$</span>
+                            <span class="selected-currency">
+                                <strong>USD</strong>
+                                <small>US Dollar</small>
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="currency-dropdown hidden">
+                            <div class="search-wrapper">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" class="currency-search" placeholder="Search currency..." autocomplete="off">
+                            </div>
+                            <div class="currency-list" role="listbox"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SWAP -->
+                <div class="swap-container">
+                    <button class="swap-btn" id="swapBtn"
+                        title="Swap currencies"
+                        aria-label="Swap currencies">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- TO -->
+                <div class="currency-group">
+                    <label>To</label>
+
+                    <div class="currency-picker" id="toPicker">
+                        <button class="currency-trigger"
+                            type="button"
+                            aria-haspopup="listbox"
+                            aria-expanded="false">
+
+                            <span class="currency-symbol">₹</span>
+
+                            <span class="selected-currency">
+                                <strong>INR</strong>
+                                <small>Indian Rupee</small>
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="currency-dropdown hidden">
+                            <div class="search-wrapper">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" class="currency-search" placeholder="Search currency..." autocomplete="off">
+                            </div>
+                            <div class="currency-list" role="listbox"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POPULAR CURRENCIES -->
+            <div class="popular-section">
+                <div class="section-heading">
+                    <h3><i class="fa-solid fa-fire"></i>Popular Currencies</h3>
+                </div>
+
+                <div class="popular-list" id="popularList">
+                    <button class="popular-btn" data-currency="USD">USD</button>
+                    <button class="popular-btn active" data-currency="INR">INR</button>
+                    <button class="popular-btn" data-currency="EUR">EUR</button>
+                    <button class="popular-btn" data-currency="GBP">GBP</button>
+                    <button class="popular-btn" data-currency="AED">AED</button>
+                </div>
+                <p class="popular-hint">
+                    Quick-select a currency for the target amount.
+                </p>
+
+            </div>
+
+            <!-- CONVERT -->
+            <button class="convert-btn" id="convertBtn">
+                <span id="convertBtnText">
+                    <i class="fa-solid fa-calculator"></i>
+                    Convert Currency
+                </span>
+                <span class="button-loader hidden" id="buttonLoader"></span>
+            </button>
+
+            <!-- RESULT -->
+            <div class="result-section">
+                <p class="result-label">Converted Amount</p>
+                <div class="result-amount" id="resultAmount"
+                    aria-live="polite">
+                    ₹0.00
+                </div>
+
+                <div class="result-details">
+                    <span id="conversionText">
+                        1 USD = 0 INR
+                    </span>
+
+                    <button class="copy-btn" id="copyBtn"
+                        aria-label="Copy converted amount"
+                        title="Copy amount">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- MESSAGES -->
+            <div class="message error-message hidden"
+                id="errorMessage" role="alert">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span id="errorText"></span>
+
+            </div>
+
+            <div class="message success-message hidden"
+                id="successMessage" role="status">
+                <i class="fa-solid fa-circle-check"></i>
+                <span id="successText"></span>
+
+            </div>
+
+            <!-- UPDATE INFORMATION -->
+            <div class="update-info">
+                <span>
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="lastUpdated">Loading rates...</span>
+                </span>
+
+                <span class="api-status" id="apiStatus">
+                    <span class="status-dot"></span>
+                    Connecting
+                </span>
+            </div>
+        </section>
+
+        <!-- POPULAR CURRENCY PAIRS -->
+        <section class="popular-pairs-section">
+            <div class="section-title">
+                <div>
+                    <span class="section-eyebrow">QUICK ACCESS</span>
+                    <h2>Popular Currency Pairs</h2>
+                </div>
+
+                <span class="currency-count" id="currencyCount">
+                    Loading currencies...
+                </span>
+            </div>
+
+            <div class="pair-grid" id="pairGrid">
+                <button class="pair-card" data-from="USD" data-to="INR">
+                    <span>USD <i class="fa-solid fa-arrow-right"></i> INR</span>
+                    <small>US Dollar to Indian Rupee</small>
+                </button>
+
+                <button class="pair-card" data-from="EUR" data-to="USD">
+                    <span>EUR <i class="fa-solid fa-arrow-right"></i> USD</span>
+                    <small>Euro to US Dollar</small>
+                </button>
+
+                <button class="pair-card" data-from="GBP" data-to="USD">
+                    <span>GBP <i class="fa-solid fa-arrow-right"></i> USD</span>
+                    <small>British Pound to US Dollar</small>
+                </button>
+
+                <button class="pair-card" data-from="AED" data-to="INR">
+                    <span>AED <i class="fa-solid fa-arrow-right"></i> INR</span>
+                    <small>UAE Dirham to Indian Rupee</small>
+                </button>
+            </div>
+        </section>
+
+        <!-- CONVERSION HISTORY -->
+        <section class="history-section">
+            <div class="section-title">
+                <div>
+                    <span class="section-eyebrow">YOUR ACTIVITY</span>
+                    <h2>Conversion History</h2>
+                </div>
+
+                <button class="clear-history-btn" id="clearHistoryBtn">
+                    <i class="fa-solid fa-trash"></i>
+                    Clear All
+                </button>
+            </div>
+
+            <div class="history-card">
+                <div class="history-header">
+                    <span>Currency Conversion</span>
+                    <span>Converted Amount</span>
+                </div>
+
+                <div id="historyList">
+                    <div class="empty-history">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <p>No conversion history yet.</p>
+                        <small>Your conversions will appear here.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="info-section">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <div>
+                    <h3>Fast Conversion</h3>
+                    <p>Convert currencies in seconds.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </div>
+
+                <div>
+                    <h3>100+ Currencies</h3>
+                    <p>Explore currencies worldwide.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <div>
+                    <h3>Conversion History</h3>
+                    <p>Keep track of your conversions.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Design & Developed by <i class="fa-solid fa-heart"></i> TechGuy 360</p>
+
+        <p>
+            Exchange rates provided by
+            <a href="https://www.exchangerate-api.com"
+                target="_blank" rel="noopener noreferrer">
+                Rates By Exchange Rate API
+            </a>
+        </p>
+        <span>© 2026 CurrencyFlow. All rights reserved.</span>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
