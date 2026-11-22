@@ -4,10 +4,297 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag & Drop - Js Project | TechGuy 360</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-up-down-left-right"></i>
+                </div>
+                <span>Drag<span class="logo-highlight">Flow</span></span>
+            </div>
+
+            <button class="reset-btn" id="resetBtn">
+                <i class="fa-solid fa-rotate-left"></i>
+                Reset Board
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <section class="hero">
+                <span class="eyebrow">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    INTERACTIVE PLAYGROUND
+                </span>
+
+                <h1>Drag. Drop. <span>Organize.</span></h1>
+
+                <p>Organize your tasks effortlessly. Drag items between containers and create your perfect workflow.</p>
+            </section>
+
+            <!-- Statistics -->
+            <section class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <h3 id="totalItems">8</h3>
+                        <p>Total Items</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+                    <div>
+                        <h3 id="completedItems">0</h3>
+                        <p>Completed</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
+                    </div>
+                    <div>
+                        <h3 id="moveCount">0</h3>
+                        <p>Items Moved</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Board Header -->
+            <div class="board-heading">
+                <div>
+                    <h2>Your Workspace</h2>
+                    <p>Drag any card into another column to organize it.</p>
+                </div>
+
+                <span class="live-status">
+                    <span></span> Live Board
+                </span>
+            </div>
+
+            <!-- Drag and Drop Board -->
+            <section class="board">
+
+                <!-- Container 1 -->
+                <div class="drop-zone" data-zone="todo">
+                    <div class="zone-header">
+                        <div class="zone-title">
+                            <span class="zone-dot purple-dot"></span>
+                            <h3>To Do</h3>
+                        </div>
+                        <span class="item-count">0</span>
+                    </div>
+
+                    <div class="drop-area" id="todo">
+                        <div class="drag-item" draggable="true" data-id="1">
+                            <div class="item-top">
+                                <span class="item-tag tag-purple">Design</span>
+                                <i class="fa-solid fa-grip-vertical drag-handle"></i>
+                            </div>
+                            <h4>Design Landing Page</h4>
+                            <p>Create a modern website layout.</p>
+                            <div class="item-footer">
+                                <span><i class="fa-regular fa-calendar"></i> Nov 24</span>
+                                <span class="priority high">High</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-item" draggable="true" data-id="2">
+                            <div class="item-top">
+                                <span class="item-tag tag-blue">Development</span>
+                                <i class="fa-solid fa-grip-vertical drag-handle"></i>
+                            </div>
+                            <h4>Build Navigation Bar</h4>
+                            <p>Implement responsive navigation.</p>
+                            <div class="item-footer">
+                                <span><i class="fa-regular fa-calendar"></i> Nov 25</span>
+                                <span class="priority medium">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="empty-message">
+                        <i class="fa-solid fa-inbox"></i>
+                        <span>Drop items here</span>
+                    </div>
+                </div>
+
+                <!-- Container 2 -->
+                <div class="drop-zone" data-zone="progress">
+                    <div class="zone-header">
+                        <div class="zone-title">
+                            <span class="zone-dot orange-dot"></span>
+                            <h3>In Progress</h3>
+                        </div>
+                        <span class="item-count">0</span>
+                    </div>
+
+                    <div class="drop-area" id="progress">
+                        <div class="drag-item" draggable="true" data-id="3">
+                            <div class="item-top">
+                                <span class="item-tag tag-orange">Development</span>
+                                <i class="fa-solid fa-grip-vertical drag-handle"></i>
+                            </div>
+                            <h4>Develop Dashboard</h4>
+                            <p>Build interactive dashboard UI.</p>
+                            <div class="item-footer">
+                                <span><i class="fa-regular fa-calendar"></i> Nov 26</span>
+                                <span class="priority high">High</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-item" draggable="true" data-id="4">
+                            <div class="item-top">
+                                <span class="item-tag tag-green">Testing</span>
+                                <i class="fa-solid fa-grip-vertical drag-handle"></i>
+                            </div>
+                            <h4>Test API Integration</h4>
+                            <p>Verify API responses and errors.</p>
+                            <div class="item-footer">
+                                <span><i class="fa-regular fa-calendar"></i> Nov 27</span>
+                                <span class="priority medium">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="empty-message">
+                        <i class="fa-solid fa-inbox"></i>
+                        <span>Drop items here</span>
+                    </div>
+                </div>
+
+                <!-- Container 3 -->
+                <div class="drop-zone" data-zone="review">
+                    <div class="zone-header">
+                        <div class="zone-title">
+                            <span class="zone-dot blue-dot"></span>
+                            <h3>Review</h3>
+                        </div>
+                        <span class="item-count">0</span>
+                    </div>
+
+                    <div class="drop-area" id="review">
+                        <div class="drag-item" draggable="true" data-id="5">
+                            <div class="item-top">
+                                <span class="item-tag tag-blue">Quality</span>
+                                <i class="fa-solid fa-grip-vertical drag-handle"></i>
+                            </div>
+                            <h4>Review UI Components</h4>
+                            <p>Check UI consistency and quality.</p>
+                            <div class="item-footer">
+                                <span><i class="fa-regular fa-calendar"></i> Nov 28</span>
+                                <span class="priority low">Low</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-item" draggable="true" data-id="6">
+                            <div class="item-top">
+                                <span class="item-tag tag-purple">Design</span>
+                                <i class="fa-solid fa-grip-vertical drag-handle"></i>
+                            </div>
+                            <h4>Check Responsive Layout</h4>
+                            <p>Review mobile and tablet layouts.</p>
+                            <div class="item-footer">
+                                <span><i class="fa-regular fa-calendar"></i> Nov 29</span>
+                                <span class="priority medium">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="empty-message">
+                        <i class="fa-solid fa-inbox"></i>
+                        <span>Drop items here</span>
+                    </div>
+                </div>
+
+                <!-- Container 4 -->
+                <div class="drop-zone" data-zone="done">
+                    <div class="zone-header">
+                        <div class="zone-title">
+                            <span class="zone-dot green-dot"></span>
+                            <h3>Done</h3>
+                        </div>
+                        <span class="item-count">0</span>
+                    </div>
+
+                    <div class="drop-area" id="done">
+                        <div class="drag-item" draggable="true" data-id="7">
+                            <div class="item-top">
+                                <span class="item-tag tag-green">Completed</span>
+                                <i class="fa-solid fa-grip-vertical drag-handle"></i>
+                            </div>
+                            <h4>Create Project Setup</h4>
+                            <p>Initialize project structure.</p>
+                            <div class="item-footer">
+                                <span><i class="fa-regular fa-calendar"></i> Nov 20</span>
+                                <span class="priority low">Low</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-item" draggable="true" data-id="8">
+                            <div class="item-top">
+                                <span class="item-tag tag-green">Completed</span>
+                                <i class="fa-solid fa-grip-vertical drag-handle"></i>
+                            </div>
+                            <h4>Configure GitHub</h4>
+                            <p>Initialize Git repository.</p>
+                            <div class="item-footer">
+                                <span><i class="fa-regular fa-calendar"></i> Nov 21</span>
+                                <span class="priority low">Low</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="empty-message">
+                        <i class="fa-solid fa-inbox"></i>
+                        <span>Drop items here</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instructions -->
+            <section class="instruction">
+                <div class="instruction-icon">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div>
+                    <h4>How to use Drag & Drop?</h4>
+                    <p>
+                        Click and hold any task card, drag it into another
+                        column, and release to move it. You can also reorder
+                        tasks within the same column.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast">
+            <i class="fa-solid fa-circle-check"></i>
+            <span id="toastMessage">Item moved successfully!</span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
