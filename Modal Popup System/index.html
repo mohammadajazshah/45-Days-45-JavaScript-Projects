@@ -3,11 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Interactive Modal Popup System">
     <title>Modal Popup System - Js Project | TechGuy 360</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <!-- Background -->
+    <div class="app-container">
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-window-restore"></i>
+                Modal<span>Flow</span>
+            </a>
+
+            <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="hero-section">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Interactive UI Component
+                </div>
+                <h1>Modal Popup <span>System</span></h1>
+                <p>
+                    A beautiful collection of interactive popup dialogs.
+                    Explore different modal types and experience smooth interactions.
+                </p>
+            </div>
+
+            <!-- Modal Cards -->
+            <section class="modal-grid">
+
+                <!-- Information Modal -->
+                <article class="modal-card">
+                    <div class="card-icon blue">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+
+                    <h3>Information Modal</h3>
+                    <p>Display important information and helpful messages.</p>
+
+                    <button class="open-btn blue-btn" data-modal="infoModal">
+                        Open Modal <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </article>
+
+                <!-- Login Modal -->
+                <article class="modal-card">
+                    <div class="card-icon purple">
+                        <i class="fa-solid fa-user-lock"></i>
+                    </div>
+
+                    <h3>Login Modal</h3>
+                    <p>Display a login form inside a popup dialog.</p>
+
+                    <button class="open-btn purple-btn" data-modal="loginModal">
+                        Open Modal <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </article>
+
+                <!-- Confirmation Modal -->
+                <article class="modal-card">
+                    <div class="card-icon orange">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+
+                    <h3>Confirmation Modal</h3>
+                    <p>Ask users to confirm an important action.</p>
+
+                    <button class="open-btn orange-btn" data-modal="confirmModal">
+                        Open Modal <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </article>
+
+                <!-- Success Modal -->
+                <article class="modal-card">
+                    <div class="card-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <h3>Success Modal</h3>
+                    <p>Show successful operations and completed actions.</p>
+
+                    <button class="open-btn green-btn" data-modal="successModal">
+                        Open Modal <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </article>
+
+                <!-- Notification Modal -->
+                <article class="modal-card">
+                    <div class="card-icon pink">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+
+                    <h3>Notification Modal</h3>
+                    <p>Display notifications and important announcements.</p>
+
+                    <button class="open-btn pink-btn" data-modal="notificationModal">
+                        Open Modal <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </article>
+
+                <!-- Custom Modal -->
+                <article class="modal-card">
+                    <div class="card-icon cyan">
+                        <i class="fa-solid fa-message"></i>
+                    </div>
+
+                    <h3>Custom Modal</h3>
+                    <p>Display your own custom popup message.</p>
+
+                    <button class="open-btn cyan-btn" id="customModalBtn">
+                        Open Modal <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </article>
+
+            </section>
+
+            <!-- Features -->
+            <section class="features">
+                <h2>Built for Better Interactions</h2>
+
+                <div class="feature-list">
+                    <span><i class="fa-solid fa-check"></i> Smooth Animations</span>
+                    <span><i class="fa-solid fa-check"></i> ESC Key Support</span>
+                    <span><i class="fa-solid fa-check"></i> Outside Click</span>
+                    <span><i class="fa-solid fa-check"></i> Responsive Design</span>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                <i class="fa-regular fa-copyright"></i>
+                2026 ModalFlow. Built by
+                <strong>TechGuy 360</strong>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- ================= MODALS ================= -->
+
+    <!-- Information Modal -->
+    <dialog class="modal" id="infoModal" aria-labelledby="infoTitle">
+        <div class="modal-content">
+            <button class="close-btn" aria-label="Close dialog">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-icon blue">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+
+            <h2 id="infoTitle">Information</h2>
+            <p>
+                Welcome to ModalFlow! This is an information popup.
+                You can use modal dialogs to display important messages
+                without navigating away from your current page.
+            </p>
+
+            <button class="modal-action blue-btn close-modal">
+                Got It
+            </button>
+        </div>
+    </dialog>
+
+    <!-- Login Modal -->
+    <dialog class="modal" id="loginModal" aria-labelledby="loginTitle">
+        <div class="modal-content login-content">
+
+            <button class="close-btn" aria-label="Close dialog">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-icon purple">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h2 id="loginTitle">Welcome Back!</h2>
+            <p>Enter your details to access your account.</p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="email"
+                            placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password"
+                            placeholder="Enter your password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="modal-action purple-btn">
+                    Login <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Confirmation Modal -->
+    <dialog class="modal" id="confirmModal" aria-labelledby="confirmTitle">
+        <div class="modal-content">
+
+            <button class="close-btn" aria-label="Close dialog">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-icon orange">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <h2 id="confirmTitle">Are You Sure?</h2>
+
+            <p>
+                Do you really want to perform this action?
+                This operation may not be reversible.
+            </p>
+
+            <div class="modal-actions">
+                <button class="modal-action secondary-btn close-modal">
+                    Cancel
+                </button>
+
+                <button class="modal-action danger-btn" id="confirmDelete">
+                    Yes, Continue
+                </button>
+            </div>
+
+        </div>
+    </dialog>
+
+    <!-- Success Modal -->
+    <dialog class="modal" id="successModal" aria-labelledby="successTitle">
+        <div class="modal-content">
+
+            <button class="close-btn" aria-label="Close dialog">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-icon green">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h2 id="successTitle">Successfully Completed!</h2>
+
+            <p>
+                Your operation has been completed successfully.
+                Everything is working as expected.
+            </p>
+
+            <button class="modal-action green-btn close-modal">
+                Awesome!
+            </button>
+
+        </div>
+    </dialog>
+
+    <!-- Notification Modal -->
+    <dialog class="modal" id="notificationModal" aria-labelledby="notificationTitle">
+        <div class="modal-content">
+
+            <button class="close-btn" aria-label="Close dialog">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-icon pink">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <h2 id="notificationTitle">New Notification</h2>
+
+            <p>
+                You have a new notification! Stay updated with the
+                latest activities and important information.
+            </p>
+
+            <button class="modal-action pink-btn close-modal">
+                Understood
+            </button>
+
+        </div>
+    </dialog>
+
+    <!-- Custom Modal -->
+    <dialog class="modal" id="customModal" aria-labelledby="customTitle">
+        <div class="modal-content">
+            <button class="close-btn" aria-label="Close dialog">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-icon cyan">
+                <i class="fa-solid fa-comment-dots"></i>
+            </div>
+
+            <h2 id="customTitle">Custom Message</h2>
+
+            <p id="customMessage">
+                This is your custom modal popup. You can modify its
+                content according to your requirements.
+            </p>
+
+            <button class="modal-action cyan-btn close-modal">
+                Close Popup
+            </button>
+        </div>
+    </dialog>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Action completed!</span>
+    </div>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
