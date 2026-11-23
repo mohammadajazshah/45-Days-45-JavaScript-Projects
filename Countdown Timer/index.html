@@ -3,9 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern countdown timer for productivity, study sessions and time management.">
     <title>Countdown Timer - Js Project | TechGuy 360</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <main class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+
+                <div>
+                    <h1>TimeFlow</h1>
+                    <p>Make every second count.</p>
+                </div>
+            </div>
+
+            <div class="header-status">
+                <span class="status-dot"></span>
+                <span>Time Management</span>
+            </div>
+        </header>
+
+        <!-- Main Timer Card -->
+        <section class="timer-card">
+            <div class="card-heading">
+                <div>
+                    <span class="eyebrow">YOUR PERSONAL TIMER</span>
+                    <h2>Countdown Timer</h2>
+                    <p>Stay focused. Manage your time.</p>
+                </div>
+
+                <div class="timer-icon">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+            </div>
+
+            <!-- Circular Progress Timer -->
+            <div class="timer-section">
+                <div class="progress-ring" id="progressRing">
+                    <div class="progress-inner">
+                        <span class="timer-label">TIME REMAINING</span>
+                        <div class="timer-display" id="timerDisplay">
+                            <span id="hours">00</span>
+                            <span class="separator">:</span>
+                            <span id="minutes">00</span>
+                            <span class="separator">:</span>
+                            <span id="seconds">00</span>
+                        </div>
+
+                        <div class="timer-status" id="timerStatus">
+                            <i class="fa-solid fa-circle-play"></i>
+                            <span>Ready to start</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duration Input -->
+            <div class="duration-section">
+                <div class="section-title">
+                    <h3>Set your duration</h3>
+                    <span>HH : MM : SS</span>
+                </div>
+
+                <div class="duration-inputs">
+                    <div class="input-group">
+                        <label for="hoursInput">Hours</label>
+                        <input type="number" id="hoursInput" min="0" max="99" value="0" placeholder="00">
+                    </div>
+
+                    <span class="input-separator">:</span>
+                    <div class="input-group">
+                        <label for="minutesInput">Minutes</label>
+                        <input type="number" id="minutesInput" min="0" max="59" value="25" placeholder="00">
+                    </div>
+
+                    <span class="input-separator">:</span>
+                    <div class="input-group">
+                        <label for="secondsInput">Seconds</label>
+                        <input type="number" id="secondsInput" min="0" max="59" value="0" placeholder="00">
+                    </div>
+                </div>
+                <p class="error-message" id="errorMessage" role="alert"></p>
+            </div>
+
+            <!-- Quick Presets -->
+            <div class="presets-section">
+                <h3>Quick presets</h3>
+                <div class="preset-buttons">
+                    <button class="preset-btn" data-minutes="5">
+                        <i class="fa-solid fa-mug-hot"></i>
+                        5 min
+                    </button>
+
+                    <button class="preset-btn active" data-minutes="25">
+                        <i class="fa-solid fa-book-open"></i>
+                        25 min
+                    </button>
+
+                    <button class="preset-btn" data-minutes="45">
+                        <i class="fa-solid fa-brain"></i>
+                        45 min
+                    </button>
+
+                    <button class="preset-btn" data-minutes="60">
+                        <i class="fa-solid fa-bullseye"></i>
+                        60 min
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Timer Controls -->
+            <div class="controls-section">
+                <button class="control-btn start-btn" id="startBtn">
+                    <i class="fa-solid fa-play"></i>
+                    <span>Start Timer</span>
+                </button>
+
+                <button class="control-btn pause-btn" id="pauseBtn" disabled>
+                    <i class="fa-solid fa-pause"></i>
+                    <span>Pause</span>
+                </button>
+
+                <button class="control-btn reset-btn" id="resetBtn">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <span>Reset</span>
+                </button>
+            </div>
+
+            <!-- Sound and Notification Settings -->
+            <div class="settings-section">
+                <label class="setting-option">
+                    <input type="checkbox" id="soundToggle" checked>
+
+                    <span class="custom-checkbox">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-volume-high"></i>
+                        Sound notification
+                    </span>
+                </label>
+
+                <button class="notification-btn" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    Enable notifications
+                </button>
+            </div>
+
+            <!-- Completion Message -->
+            <div class="completion-message" id="completionMessage" role="status" aria-live="polite">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                    <h3>Time's Up!</h3>
+                    <p>Great job! You completed your countdown.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information Cards -->
+        <section class="info-section">
+            <div class="info-card">
+                <div class="info-icon purple">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <div>
+                    <h3>Stay on Track</h3>
+                    <p>Keep your activities organized.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon green">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+
+                <div>
+                    <h3>Stay Focused</h3>
+                    <p>Make better use of your time.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon orange">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <div>
+                    <h3>Be Productive</h3>
+                    <p>Complete tasks efficiently.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                Made with <i class="fa-solid fa-heart"></i>
+                for better productivity.
+            </p>
+
+            <span>© 2026 TimeFlow. All rights reserved.</span>
+        </footer>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
