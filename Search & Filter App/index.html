@@ -1,11 +1,159 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Searxh </title>
+    <title>Search & Filter App - Js Project | TechGuy 360</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Discover<span class="logo-highlight">Hub</span></span>
+            </div>
+
+            <p class="header-subtitle">
+                Find exactly what you're looking for.
+            </p>
+        </header>
+        <!-- Main Content -->
+        <main>
+
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search products, technologies, tools..." autocomplete="off" aria-label="Search items">
+
+                    <button id="clearSearch" class="clear-search"
+                            aria-label="Clear search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <p class="search-hint">
+                    <i class="fa-regular fa-lightbulb"></i>
+                    Try searching by name, category, or keyword.
+                </p>
+            </section>
+
+            <!-- Filter Section -->
+            <section class="filter-section">
+                <div class="filter-header">
+                    <h2>
+                        <i class="fa-solid fa-sliders"></i>
+                        Filters
+                    </h2>
+
+                    <button id="resetFilters" class="reset-btn">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        Reset All
+                    </button>
+                </div>
+
+                <div class="filter-controls">
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <label for="categoryFilter">Category</label>
+
+                        <select id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="Frontend">Frontend</option>
+                            <option value="Backend">Backend</option>
+                            <option value="Database">Database</option>
+                            <option value="DevOps">DevOps</option>
+                            <option value="Tools">Tools</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <label for="priceFilter">Maximum Price</label>
+
+                        <select id="priceFilter">
+                            <option value="all">Any Price</option>
+                            <option value="500">Under ₹500</option>
+                            <option value="1000">Under ₹1,000</option>
+                            <option value="2000">Under ₹2,000</option>
+                            <option value="5000">Under ₹5,000</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort Filter -->
+                    <div class="filter-group">
+                        <label for="sortFilter">Sort By</label>
+
+                        <select id="sortFilter">
+                            <option value="default">Default</option>
+                            <option value="name-asc">Name: A to Z</option>
+                            <option value="name-desc">Name: Z to A</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Information -->
+            <section class="results-section">
+                <div class="results-header">
+                    <div>
+                        <h2>Explore Items</h2>
+                        <p id="resultsCount">Showing 0 results</p>
+                    </div>
+
+                    <span class="results-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </span>
+                </div>
+
+                <!-- Dynamic Results -->
+                <div id="resultsContainer" class="results-grid">
+                    <!-- JavaScript generates cards here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state hidden">
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h3>No Results Found</h3>
+                    <p>
+                        We couldn't find anything matching your search.
+                        Try different keywords or reset your filters.
+                    </p>
+
+                    <button id="emptyResetBtn">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        Clear Filters
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Design & Built by <i class="fa-solid fa-heart"></i> TechGuy 360</p>
+            <p>© 2026 DiscoverHub</p>
+        </footer>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
