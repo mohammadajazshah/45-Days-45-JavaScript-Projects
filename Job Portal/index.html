@@ -3,9 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix Clone - JavaScript | TechGuy 360</title>
+    <title>JobHub - Find Your Dream Job | TechGuy 360</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-briefcase"></i>
+                Job<span>Hub</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#" class="active">Find Jobs</a>
+                <a href="#jobs">Browse Jobs</a>
+                <a href="#saved">Saved Jobs</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-btn" id="themeToggle"
+                    aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <a href="#jobs" class="post-btn">
+                    Explore Jobs
+                </a>
+
+                <button class="mobile-menu" id="mobileMenu"
+                    aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="hero-tag">
+                <i class="fa-solid fa-rocket"></i>
+                Your career starts here
+            </span>
+
+            <h1>
+                Find Your <span>Dream Job</span><br>
+                Build Your Future
+            </h1>
+
+            <p>
+                Discover thousands of opportunities from top companies.
+                Find the right job that matches your skills and passion.
+            </p>
+
+            <!-- SEARCH FORM -->
+            <form class="search-box" id="searchForm">
+                <div class="search-field">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text"
+                        id="searchInput"
+                        placeholder="Job title, company or keyword">
+
+                </div>
+
+                <div class="search-field location-field">
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <input type="text"
+                        id="locationInput"
+                        placeholder="Location">
+
+                </div>
+
+                <button type="submit" class="search-btn">
+                    Search Jobs
+                </button>
+
+            </form>
+
+            <div class="popular-searches">
+                <span>Popular:</span>
+                <button class="popular-tag" data-search="Developer">Developer</button>
+                <button class="popular-tag" data-search="Designer">Designer</button>
+                <button class="popular-tag" data-search="Marketing">Marketing</button>
+                <button class="popular-tag" data-search="Data">Data</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="container main-content" id="jobs">
+
+        <!-- FILTER SIDEBAR -->
+        <aside class="filter-sidebar" id="filterSidebar">
+            <div class="filter-heading">
+                <h3><i class="fa-solid fa-sliders"></i>Filters</h3>
+                <button id="clearFilters" class="clear-btn"> Clear All</button>
+            </div>
+
+            <!-- CATEGORY FILTER -->
+            <div class="filter-group">
+                <h4>Job Category</h4>
+                <label>
+                    <input type="checkbox" name="category" value="Technology">
+                    Technology
+                </label>
+
+                <label>
+                    <input type="checkbox" name="category" value="Design">
+                    Design
+                </label>
+
+                <label>
+                    <input type="checkbox" name="category" value="Marketing">
+                    Marketing
+                </label>
+
+                <label>
+                    <input type="checkbox" name="category" value="Finance">
+                    Finance
+                </label>
+
+                <label>
+                    <input type="checkbox" name="category" value="Business">
+                    Business
+                </label>
+            </div>
+
+            <!-- EMPLOYMENT TYPE -->
+            <div class="filter-group">
+                <h4>Employment Type</h4>
+
+                <label>
+                    <input type="checkbox" name="type" value="Full-time">
+                    Full-time
+                </label>
+
+                <label>
+                    <input type="checkbox" name="type" value="Part-time">
+                    Part-time
+                </label>
+
+                <label>
+                    <input type="checkbox" name="type" value="Internship">
+                    Internship
+                </label>
+
+                <label>
+                    <input type="checkbox" name="type" value="Contract">
+                    Contract
+                </label>
+            </div>
+
+            <!-- WORK MODE -->
+            <div class="filter-group">
+                <h4>Work Mode</h4>
+                <label>
+                    <input type="checkbox" name="mode" value="Remote">
+                    Remote
+                </label>
+
+                <label>
+                    <input type="checkbox" name="mode" value="Hybrid">
+                    Hybrid
+                </label>
+
+                <label>
+                    <input type="checkbox" name="mode" value="Onsite">
+                    Onsite
+                </label>
+
+            </div>
+
+            <!-- COMPANY FILTER -->
+            <div class="filter-group">
+                <h4>Company</h4>
+                <select id="companyFilter">
+                    <option value="">All Companies</option>
+                </select>
+            </div>
+        </aside>
+
+        <!-- JOB LISTINGS -->
+        <section class="jobs-section">
+            <div class="jobs-header">
+                <div>
+                    <h2>Latest Job Opportunities</h2>
+                    <p>Explore opportunities that match your career goals.</p>
+                </div>
+
+                <button class="filter-mobile-btn" id="mobileFilterBtn">
+                    <i class="fa-solid fa-filter"></i>
+                    Filters
+                </button>
+            </div>
+
+            <!-- JOB COUNT AND SORT -->
+            <div class="jobs-toolbar">
+                <p>Showing <strong id="jobCount">0</strong> jobs</p>
+
+                <div class="sort-box">
+                    <label for="sortSelect">Sort by:</label>
+                    
+                    <select id="sortSelect">
+                        <option value="relevance">Relevance</option>
+                        <option value="newest">Newest First</option>
+                        <option value="company">Company Name</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- JOB CARDS CONTAINER -->
+            <div class="job-list" id="jobList">
+
+                <!-- JavaScript dynamically renders jobs here -->
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div class="empty-state" id="emptyState">
+                <i class="fa-solid fa-folder-open"></i>
+                <h3>No Jobs Found</h3>
+                <p>
+                    We couldn't find jobs matching your search.
+                    Try changing your filters.
+                </p>
+                <button id="resetSearch" class="search-btn">
+                    Reset Search
+                </button>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ================= SAVED JOBS ================= -->
+    <section class="container saved-section" id="saved">
+        <div class="saved-heading">
+            <h2>
+                <i class="fa-solid fa-bookmark"></i>
+                Your Saved Jobs
+            </h2>
+            <span id="savedCount">0 saved jobs</span>
+        </div>
+
+        <div class="saved-list" id="savedList">
+            <p class="saved-empty">
+                You haven't saved any jobs yet.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================= JOB DETAILS MODAL ================= -->
+    <div class="modal-overlay" id="jobModal">
+        <div class="modal">
+            <button class="modal-close" id="closeModal"
+                aria-label="Close job details">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Job details dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-briefcase"></i>
+                Job<span>Hub</span>
+            </a>
+            <p>Find opportunities. Build careers. Shape your future.</p>
+            <p class="copyright"> &copy; 2026 JobHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
