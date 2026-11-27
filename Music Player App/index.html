@@ -1,11 +1,101 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player - Js Project | TechGuy 360</title>
+
+    <title>VibeMusic - Spotify Music Player</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <h2 class="logo">
+                <i class="fa-brands fa-spotify"></i>
+                VibeMusic
+            </h2>
+
+            <nav>
+                <a href="#" class="active">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+
+                <a href="#search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </a>
+
+                <a href="#library">
+                    <i class="fa-solid fa-book"></i>
+                    Your Library
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Powered by Spotify API</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Discover Music</h1>
+                    <p>Find your favourite music with Spotify</p>
+                </div>
+
+                <button id="loginBtn" class="login-btn">
+                    <i class="fa-brands fa-spotify"></i>
+                    Connect Spotify
+                </button>
+            </header>
+
+            <!-- Search -->
+            <section class="search-section" id="search">
+                <h2>Search Your Music</h2>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text" id="searchInput" placeholder="Search songs, artists, albums...">
+                    <button id="searchBtn">Search</button>
+                </div
+            </section>
+
+            <!-- Search Results -->
+            <section class="music-section">
+                <div class="section-heading">
+                    <h2>Search Results</h2>
+                    <span id="resultCount">0 songs</span>
+                </div>
+                <div id="musicContainer" class="music-grid">
+
+                    <div class="empty-state">
+                        <i class="fa-brands fa-spotify"></i>
+                        <p>Search for your favourite songs</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spotify Player -->
+            <section class="player-section">
+                <h2>Spotify Player</h2>
+                <div id="spotifyPlayer" class="spotify-player">
+                    <p>Select a song to play</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
